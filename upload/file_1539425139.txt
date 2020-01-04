@@ -1,0 +1,166 @@
+R54457
+
+
+
+<?php
+
+include("db_connection.php");
+
+
+
+echo'
+<!DOCTYPE>
+<html>
+<body>
+';
+
+
+echo' 
+
+<form method ="POST" action="" method="multipart/form-data">
+  Ime:<input type="text" name="imeStud"><br><br>
+    Prezime :<input type="text" name="prezStud"><br><br>
+    Grad Rodenja:
+        <select name="pbrRod">
+            <option value=""></option>';
+
+
+            $query= "SELECT pbr,nazMjesto
+                    From mjesto ORDER by nazMjesto ASC";
+
+
+            $result = mysqli_query($con, $query);
+            
+            while($row = mysqli_fetch_array($result)){
+
+                    $pbr = $row['pbr'];
+                    $nazMjesto= $row['nazMjesto'];
+
+                echo '<option value="'.$pbr.'">'.$nazMjesto.'</option>';
+
+            }
+
+    echo '</select>
+    
+    <br><br>Grad Stanovanja:
+    <br>
+    <br>
+    <select name="pbrStan">
+    <option value=""></option>';
+    
+    $query = "SELECT pbr, nazMjesto from mjesto ORDER BY nazMjesto ASC ";
+
+    $result=mysqli_query($con, $query);
+
+    while($row = mysqli_fetch_array($result)){
+
+        $pbr = $row['pbr'];
+        $nazMjesto=$row['nazMjesto'];
+
+        echo ' <option value='.$pbr.'>'.$nazMjesto.'</option>';
+
+
+
+    }
+
+
+
+    
+    echo '
+            </select>
+    <br><br>Datum rodenja:
+    <select name="dan">';
+
+    for($x=1; $x <= 7; $x++){
+
+        echo '<option value='.$x.'>'.$x.'</option>';
+
+    }
+
+    echo '
+    </select>
+    <select name="mj">';
+    for($x=1; $x <= 31; $x++){
+
+        echo '<option value='.$x.'>'.$x.' </option>';
+
+    }
+    
+ echo '
+    </select>
+ <select name="god">
+ ';
+    for($x=1930; $x <=2003; $x++ ){
+
+        echo '<option value='.$x.'>'.$x.'</option>';
+
+
+    }
+
+    echo ' </select>
+    
+    <input type="text" name="jmbgStud" ><br><br><br>
+    <input type="submit" name ="btn_upload" value="upload">
+    </form>
+    ';
+     
+    
+    if(isset($_POST["btn_upload"])){
+
+        $ime = $_POST["imeStud"];
+        $prez = $_POST["prezStud"];
+        $pbrRod= $_POST["pbrRod"];
+        $pbrStan=$_POST["pbrStan"];
+        $datRod=$_POST ["god"]. '-' . $_POST["mj"]. '-'. $_POST["dan"];
+        $jmbgStud= $_POST["jmbgStud"];
+
+         $query = "INSERT INTO stud 
+         (ime, prez, pbrRod, pbrStan, datRod,  jmbgStud)
+         VALUES('$imeStud', '$prezStud', '$pbrRod','$pbrStan', '$datRod','$jmbgStud')";
+
+
+        $result = mysqli_query($con, $query);
+        if($result){
+
+
+            echo ' podatci uspjesno spremljeni';
+        }
+
+        else {
+
+
+            echo ' podatci nisu spremljeni';
+
+        }
+
+
+    }
+
+    
+
+echo'</body>
+</html>';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>

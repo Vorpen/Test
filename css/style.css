@@ -1,0 +1,77 @@
+
+*{box-sizing:border-box}
+body {
+	margin:0;
+	padding:0;
+	
+	font-family: 'Libre Baskerville', serif;
+}
+
+
+
+.Container_login{
+	
+	margin:0 auto;
+	width:400px;
+	height:800px;
+	
+}
+.title{
+	text-align:center;
+	font-family: 'Gaegu', cursive;
+	color:black;
+	margin-top:30px;
+}
+
+
+/*------------------Login------------------*/ 
+
+form{
+	
+	text-align:center;
+	margin-top:50%;
+	
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color: initial;
+	font-family: 'Libre Baskerville', serif;
+	padding:9px;
+	margin-top:10px;
+	margin-bottom:10px;
+	width:320px;
+}
+form input {
+	font-family: 'Libre Baskerville', serif;
+	padding:9px;
+	margin-top:10px;
+	margin-bottom:10px;
+	width:320px;
+	
+	
+
+}
+.login{
+	
+	margin-top:36px;
+
+}
+.register{
+
+	margin-top:20px;
+
+}
+
+a {
+	
+	text-decoration:none;
+	display:inline-block;
+	margin-top:5px;
+	
+}
+
+
